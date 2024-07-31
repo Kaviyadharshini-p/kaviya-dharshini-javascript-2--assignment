@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .numbers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .number {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      border-radius: 50%;
+    }
+    .even {
+      background-color: #2ecc71; /* Green for even numbers */
+    }
+    .odd {
+      background-color: #f39c12; /* Orange for odd numbers */
+    }
+    .prime {
+      background-color: #e74c3c; /* Red for prime numbers */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Number Generator</h1>
+    <button id="generateBtn">Generate Numbers</button>
+    <div class="numbers" id="numbersContainer">
+      <!-- Numbers will be dynamically added here -->
+    </div>
+  </div>
+  <script>
+    const countries = [
+  { name: '30DaysOfPython Challenge', status: 'Done' },
+  { name: '30DaysOfJavaScript Challenge', status: 'Ongoing' },
+  { name: '30DaysOfReact Challenge', status: 'Coming' },
+  { name: '30DaysOfFullStack Challenge', status: 'Coming' },
+  { name: '30DaysOfDataAnalysis Challenge', status: 'Coming' },
+  { name: '30DaysOfReactNative Challenge', status: 'Coming' },
+  { name: '30DaysOfMachineLearning Challenge', status: 'Coming' }
+];
+
+// Get the container element
+const container = document.getElementById('countriesContainer');
+
+// Function to create and style country divs
+const createCountryElement = (name, status) => {
+  const countryDiv = document.createElement('div');
+  countryDiv.textContent = name;
+  countryDiv.classList.add('country');
+
+  // Add status-specific class for border color
+  if (status === 'Done') {
+    countryDiv.style.backgroundColor = '#e0e0e0'; // Light gray for completed
+  } else if (status === 'Ongoing') {
+    countryDiv.style.backgroundColor = '#f9f7ae'; // Light yellow for ongoing
+    countryDiv.classList.add('ongoing');
+  } else if (status === 'Coming') {
+    countryDiv.style.backgroundColor = '#f2dede'; // Light red for coming
+    countryDiv.classList.add('coming');
+  }
+
+  return countryDiv;
+};
+
+// Loop through countries array and create country divs
+countries.forEach(country => {
+  const countryElement = createCountryElement(country.name, country.status);
+  container.appendChild(countryElement);
+});
+
+  </script>
+</body>
+</html>

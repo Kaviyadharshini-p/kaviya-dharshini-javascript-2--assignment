@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript for Everyone: DOM</title>
+  <style>
+    /* Optional: Add some basic styling */
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      margin-bottom: 5px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>JavaScript Challenges in 2024</h1>
+    <h2>30DaysOfJavaScript Challenge</h2>
+    <ul>
+      <li>30DaysOfPython Challenge Done</li>
+      <li>30DaysOfJavaScript Challenge Ongoing</li>
+      <li>30DaysOfReact Challenge Coming</li>
+      <li>30DaysOfFullStack Challenge Coming</li>
+      <li>30DaysOfDataAnalysis Challenge Coming</li>
+      <li>30DaysOfReactNative Challenge Coming</li>
+      <li>30DaysOfMachineLearning Challenge Coming</li>
+    </ul>
+  </div>
+
+  <script>
+// Select the <h1> element containing the year
+    const yearHeading = document.querySelector('h1');
+
+// Array of colors to cycle through
+const colors = ['red', 'blue', 'green', 'orange', 'purple'];
+
+// Index for tracking current color
+let colorIndex = 0;
+
+// Function to change year color every 1 second
+setInterval(() => {
+  yearHeading.style.color = colors[colorIndex];
+  colorIndex = (colorIndex + 1) % colors.length;
+}, 1000);
+
+// Select the <h2> element containing the date and time
+    const dateTimeHeading = document.querySelector('h2');
+
+// Function to generate a random color
+const randomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+// Function to change background color every second
+setInterval(() => {
+  dateTimeHeading.style.backgroundColor = randomColor();
+}, 1000);
+
+// Select all <li> elements
+    const challengeItems = document.querySelectorAll('li');
+
+// Loop through each <li> element and apply background color based on text content
+challengeItems.forEach(item => {
+  const text = item.textContent.toLowerCase();
+  if (text.includes('done')) {
+    item.style.backgroundColor = 'green'; // Completed challenge
+  } else if (text.includes('ongoing')) {
+    item.style.backgroundColor = 'yellow'; // Ongoing challenge
+  } else {
+    item.style.backgroundColor = 'red'; // Coming challenges
+  }
+});
+
+
+
+  </script>
+</body>
+</html>

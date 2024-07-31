@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Numbers Styling</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .number {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      border-radius: 5px;
+    }
+    .even {
+      background-color: green;
+    }
+    .odd {
+      background-color: yellow;
+    }
+    .prime {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="numberContainer">
+    <!-- Numbers will be dynamically added here -->
+  </div>
+
+  <script>
+// Function to check if a number is prime
+const isPrime = num => {
+  if (num <= 1) return false;
+  if (num <= 3) return true;
+  if (num % 2 === 0 || num % 3 === 0) return false;
+  let i = 5;
+  while (i * i <= num) {
+    if (num % i === 0 || num % (i + 2) === 0) return false;
+    i += 6;
+  }
+  return true;
+};
+
+// Get the container element
+const container = document.getElementById('numberContainer');
+
+// Generate numbers from 1 to 100 dynamically
+for (let i = 1; i <= 100; i++) {
+  const numberDiv = document.createElement('div');
+  numberDiv.textContent = i;
+  numberDiv.classList.add('number');
+
+  // Determine if the number is even, odd, or prime
+  if (i % 2 === 0) {
+    numberDiv.classList.add('even');
+  } else {
+    numberDiv.classList.add('odd');
+  }
+
+  if (isPrime(i)) {
+    numberDiv.classList.add('prime');
+  }
+
+  // Append the div to the container
+  container.appendChild(numberDiv);
+}
+
+  </script>
+</body>
+</html>

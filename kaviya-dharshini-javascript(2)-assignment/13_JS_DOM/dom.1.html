@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Paragraph Manipulation</title>
+  <style>
+    /* Optional: Add some basic styling */
+    .paragraph {
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <p>First Paragraph</p>
+  <p>Second Paragraph</p>
+  <p>Third Paragraph</p>
+  <p>Fourth Paragraph</p>
+
+  <script>
+    // 1. Get the first paragraph by tag name
+    const firstParagraph = document.querySelector('p');
+    console.log('First Paragraph by tag name:', firstParagraph.textContent);
+
+    // 2. Get each paragraph by id
+    const secondParagraph = document.querySelector('#second');
+    const thirdParagraph = document.querySelector('#third');
+    console.log('Second Paragraph by id:', secondParagraph.textContent);
+    console.log('Third Paragraph by id:', thirdParagraph.textContent);
+
+    // 3. Get all paragraphs as nodeList by tag name
+    const allParagraphs = document.querySelectorAll('p');
+    console.log('All Paragraphs as nodeList:', allParagraphs);
+
+    // 4. Loop through nodeList and get text content of each paragraph
+    allParagraphs.forEach(paragraph => {
+      console.log('Text Content:', paragraph.textContent);
+    });
+
+    // 5. Set text content to the fourth paragraph
+    const fourthParagraph = document.querySelectorAll('p')[3];
+    fourthParagraph.textContent = 'Fourth Paragraph';
+
+    // 6. Set id and class attributes for all paragraphs
+    allParagraphs.forEach((paragraph, index) => {
+      paragraph.id = `paragraph${index + 1}`;
+      paragraph.classList.add('paragraph');
+    });
+    // Change style of each paragraph
+allParagraphs.forEach((paragraph, index) => {
+  paragraph.style.color = index % 2 === 0 ? 'green' : 'red'; // Alternating colors
+  paragraph.style.backgroundColor = '#f0f0f0';
+  paragraph.style.border = '1px solid #ccc';
+  paragraph.style.fontSize = '16px';
+  paragraph.style.fontFamily = 'Arial, sans-serif';
+});
+// Select all paragraphs and give first and third green, second and fourth red
+allParagraphs.forEach((paragraph, index) => {
+  if (index === 0 || index === 2) {
+    paragraph.style.color = 'green';
+  } else if (index === 1 || index === 3) {
+    paragraph.style.color = 'red';
+  }
+});
+
+  </script>
+
+</body>
+</html>

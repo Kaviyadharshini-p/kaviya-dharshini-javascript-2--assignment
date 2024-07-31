@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Code Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .container {
+      text-align: center;
+    }
+    .keycode {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 24px;
+      background-color: #3498db;
+      color: white;
+      border-radius: 10px;
+      margin: 10px;
+      transition: background-color 0.3s;
+    }
+    .keycode.active {
+      background-color: #2ecc71; /* Green when key is pressed */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="display" class="keycode">Press a key</div>
+  </div>
+
+  <script>
+    // Function to display key code and change color on key press
+const displayKeyCode = event => {
+  const keyCodeDisplay = document.getElementById('display');
+  keyCodeDisplay.textContent = event.keyCode;
+  
+  // Remove active class after 300ms to reset color
+  keyCodeDisplay.classList.add('active');
+  setTimeout(() => {
+    keyCodeDisplay.classList.remove('active');
+  }, 300);
+};
+
+// Event listener for keydown event to display key code
+document.addEventListener('keydown', displayKeyCode);
+
+     </script>
+</body>
+</html>
